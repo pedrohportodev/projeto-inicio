@@ -20,9 +20,21 @@ public class ProdutoController {
     public List<ProdutoEntity> findAll(){
         return  produtoService.findAll();
     }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoEntity createProduct(@RequestBody ProdutoDTO produtoDTO){
         return produtoService.createProduct(produtoDTO);
+    }
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+public ProdutoEntity updateProduct(@PathVariable Integer id,
+        @RequestBody ProdutoDTO produtoDTO){
+           return produtoService.atualizarProduto(produtoDTO,id);
+    }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProduct(@PathVariable Integer id){
+        produtoService.removerProduto(id);
     }
 }
