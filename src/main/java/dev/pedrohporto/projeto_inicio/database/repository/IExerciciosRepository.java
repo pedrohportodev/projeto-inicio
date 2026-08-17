@@ -11,6 +11,8 @@ public interface IExerciciosRepository extends JpaRepository<ExerciciosEntity, L
 
  List<ExerciciosEntity> findAllByGrupoMuscular(String grupoMuscular);
 
- @Query(value = "SELECT e FROM ExerciciosEntity e WHERE UPPER(e.grupoMuscular) = UPPER(:grupoMuscular)")
+ @Query(value = """
+       SELECT e FROM ExerciciosEntity e
+        WHERE UPPER(e.grupoMuscular) = UPPER(:grupoMuscular)""")
  List<ExerciciosEntity> findAllByGrupoMuscularJpql(@Param("grupoMuscular") String grupoMuscular);
 }
