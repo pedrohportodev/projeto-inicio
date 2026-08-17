@@ -1,8 +1,16 @@
 spring:
   application:
     name: projeto-inicio
+
   datasource:
-    url: ${DB_URL}
+    url: jdbc:mysql://localhost:3306/projeto_inicio?createDatabaseIfNotExist=true
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
