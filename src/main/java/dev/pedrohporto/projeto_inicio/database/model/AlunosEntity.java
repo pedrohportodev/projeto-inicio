@@ -23,11 +23,10 @@ public class AlunosEntity {
     private String nome;
     @Column(nullable = false, unique = true)
     private String email;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "avaliacao_fisica_id")
     private AvaliacoesFisicasEntity avaliacoesFisicas;
-
-    @OneToMany(mappedBy = "aluno_id")
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<TreinosEntity> treinos = new HashSet<>();
 
 }

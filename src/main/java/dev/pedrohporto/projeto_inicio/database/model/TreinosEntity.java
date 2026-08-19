@@ -23,7 +23,7 @@ public class TreinosEntity {
     private String nome;
     @ManyToOne
     @JoinColumn(name = "aluno_id")
-    private AlunosEntity aluno_id;
+    private AlunosEntity aluno;
 
     @ManyToMany
     @JoinTable(

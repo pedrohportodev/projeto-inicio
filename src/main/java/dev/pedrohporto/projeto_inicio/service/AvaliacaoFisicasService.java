@@ -28,7 +28,7 @@ public class AvaliacaoFisicasService {
                 .peso(avaliacaoDTO.peso())
                 .altura(avaliacaoDTO.altura())
                 .porcentagemBF(avaliacaoDTO.porcentagemBF()).build();
-         avaliacoesFisicas = avaliacoesFisicasRepository.save(avaliacoesFisicas);
+
          aluno.setAvaliacoesFisicas(avaliacoesFisicas);
          alunosRepository.save(aluno);
     }
