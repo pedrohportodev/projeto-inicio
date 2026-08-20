@@ -1,6 +1,7 @@
 package dev.pedrohporto.projeto_inicio.service;
 
 import dev.pedrohporto.projeto_inicio.DTO.AvaliacaoFisicaDTO;
+import dev.pedrohporto.projeto_inicio.DTO.AvaliacoesFisicasProjection;
 import dev.pedrohporto.projeto_inicio.database.model.AlunosEntity;
 import dev.pedrohporto.projeto_inicio.database.model.AvaliacoesFisicasEntity;
 import dev.pedrohporto.projeto_inicio.database.repository.IAlunosRepository;
@@ -8,7 +9,12 @@ import dev.pedrohporto.projeto_inicio.database.repository.IAvaliacoesFisicasRepo
 import dev.pedrohporto.projeto_inicio.exception.BadRequestException;
 import dev.pedrohporto.projeto_inicio.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,6 +37,15 @@ public class AvaliacaoFisicasService {
 
          aluno.setAvaliacoesFisicas(avaliacoesFisicas);
          alunosRepository.save(aluno);
+    }
+    public List<AvaliacoesFisicasProjection> getAllAvaliacoes(){
+        return avaliacoesFisicasRepository.getAllAvaliacoes();
+    }
+    public Page<AvaliacoesFisicasProjection> getAllAvaliacoesPageable(Integer page, Integer size){
+
+        avaliacoesFisicasRepository.findAll(Sort.by("id").descending());
+
+        return avaliacoesFisicasRepository.getAllAvaliacoesPage(PageRequest.of(page,size));
     }
 
 }

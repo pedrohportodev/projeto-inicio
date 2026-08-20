@@ -36,4 +36,9 @@ private final AlunoService alunoService;
     public AvaliacaoFisicaDTO getAvaliacaoFisica(@PathVariable Long alunoId) throws NotFoundException {
         return  alunoService.getAvaliacoesFisicas(alunoId);
     }
+    @DeleteMapping("/{alunoId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarAluno(@PathVariable Long alunoId) throws NotFoundException {
+        alunoService.deletarAluno(alunoId);
+    }
 }
